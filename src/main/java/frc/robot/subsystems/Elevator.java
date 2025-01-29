@@ -47,13 +47,13 @@ public class Elevator extends SubsystemBase {
   }
 
   private Elevator() {
-    ffd = new ElevatorFeedforward(0.0, Constants.Elevator.G_DOWN, 0.0);
-    ffu = new ElevatorFeedforward(0.0, Constants.Elevator.G_UP, 0.0);
+    ffd = new ElevatorFeedforward(0.0, 0.0, 0.0);
+    ffu = new ElevatorFeedforward(0.0, 0.0, 0.0);
     
     limitSwitch = new DigitalInput(Constants.Elevator.LIMIT_SWITCH_PORT);
     leftMotor = Constants.Elevator.ELEVATOR_LEFT.createTalon();
     rightMotor = Constants.Elevator.ELEVATOR_RIGHT.createTalon();
-    
+
     leftMotor.setControl(new Follower(rightMotor.getDeviceID(), true));
     
     //creating config for software limit switch bec sushi lib doesnt handle
